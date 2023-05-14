@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// materi variabel
 func variabel() {
 	var nama string = "Bagas"
 	var angka int = 20
@@ -17,6 +18,7 @@ func variabel() {
 	fmt.Println("Konstanta", alamat)
 }
 
+// materi operator
 func operator() {
 	angka1 := 20
 	angka2 := 8
@@ -28,6 +30,7 @@ func operator() {
 	fmt.Println("Hasil sisa pembagian", angka1%angka2)
 }
 
+// materi if else
 func ifElse() {
 	nilai := 78
 
@@ -44,6 +47,7 @@ func ifElse() {
 	}
 }
 
+// materi switch case
 func switchCase() {
 	warnaLampu := "Merah"
 
@@ -71,12 +75,14 @@ func switchCase() {
 
 }
 
+// materi array
 func array() {
 	arr := []int{1, 2, 3, 4, 5}
 	arr = append(arr, 6, 7, 8, 9)
 	fmt.Println(arr)
 }
 
+// materi looping
 func loop() {
 	arr := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
 	for i := 0; i < len(arr); i++ {
@@ -91,6 +97,7 @@ func loop() {
 	}
 }
 
+// materi slice
 func slice() {
 	var arr1 = [4]int{1, 2, 3, 4}
 	fmt.Println(arr1)
@@ -101,6 +108,7 @@ func slice() {
 	fmt.Println(arr2)
 }
 
+// materi map
 func mapType() {
 	ibukota := map[string]string{
 		"Indonesia": "Jakarta",
@@ -127,6 +135,7 @@ func mapType() {
 	fmt.Println(hasKey, value)
 }
 
+// materi range loop
 func rangeLoop() {
 	arr := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
 
@@ -139,6 +148,7 @@ func rangeLoop() {
 	}
 }
 
+// materi function
 func functionReturn(operator string, angka1 int, angka2 int) int {
 	if operator == "+" {
 		return angka1 + angka2
@@ -149,12 +159,14 @@ func functionReturn(operator string, angka1 int, angka2 int) int {
 	// function yang huruf depannya besar = public, kalo kecil = private
 }
 
+// materi multiple return function
 func multipleReturnFunction(angka1 int, angka2 int) (int, int) {
 	penjumlahan := angka1 + angka2
 	pengurangan := angka1 - angka2
 	return penjumlahan, pengurangan
 }
 
+// materi variadic function
 func variadicFunction(angka ...int) int {
 	sum := 0
 	for i := 0; i < len(angka); i++ {
@@ -164,6 +176,7 @@ func variadicFunction(angka ...int) int {
 	return sum
 }
 
+// materi closure function
 func closureFunction() {
 	nama := func(name string) string {
 		return name
@@ -209,6 +222,7 @@ func GanjilGenap() func(...int) ([]int, []int) {
 	}
 }
 
+// materi pointer
 func pointer() {
 	a := 10
 	fmt.Println("Value a :", a)
@@ -242,6 +256,7 @@ func pointerInFunction(a *int, b *int) {
 	fmt.Println("Hasil penjumlahan function dengan parameter pointer :", *a+*b)
 }
 
+// materi struct
 func structLesson() {
 	type User struct {
 		FirstName string
@@ -281,8 +296,24 @@ func structLesson() {
 	fmt.Println(customer)
 }
 
-func method() {
+// materi method
+type Nilai struct {
+	a, b int
+}
 
+// method return
+func (n Nilai) Penjumlahan() int {
+	return n.a + n.b
+}
+
+// method tanpa return
+func (n Nilai) Perkalian() {
+	fmt.Println("Hasil perkalian :", n.a*n.b)
+}
+
+// method dengan pointer (untuk ubah value variabel)
+func (n *Nilai) UbahNilaiA(a int) {
+	n.a = a
 }
 
 func main() {
@@ -335,5 +366,15 @@ func main() {
 	fmt.Println()
 	fmt.Println("=====STRUCT=====")
 	structLesson()
+	fmt.Println()
+	fmt.Println("=====METHOD=====")
+	nilai := Nilai{2, 4}
+	fmt.Println("Nilai a sebelum diubah :", nilai.a)
+	fmt.Println("Hasil penjumlahan sebelum ubah a :", nilai.Penjumlahan())
+	nilai.Perkalian()
+	nilai.UbahNilaiA(10)
+	fmt.Println("Nilai a sesudah diubah :", nilai.a)
+	fmt.Println("Hasil penjumlahan sesudah ubah a :", nilai.Penjumlahan())
+	nilai.Perkalian()
 	fmt.Println()
 }
