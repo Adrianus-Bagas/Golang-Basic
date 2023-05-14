@@ -242,6 +242,49 @@ func pointerInFunction(a *int, b *int) {
 	fmt.Println("Hasil penjumlahan function dengan parameter pointer :", *a+*b)
 }
 
+func structLesson() {
+	type User struct {
+		FirstName string
+		LastName  string
+		Address   string
+		Age       int
+	}
+
+	user := User{
+		FirstName: "Adrianus",
+		LastName:  "Bagas",
+		Address:   "Bandung",
+		Age:       22,
+	}
+
+	fmt.Println(user)
+	fmt.Println("Alamat user :", user.Address)
+
+	userPointer := &user
+	// mencetak alamat user
+	fmt.Println(userPointer)
+	// mencetak value user
+	fmt.Println(*userPointer)
+	// mencetak element userPointer
+	fmt.Println(userPointer.Address)
+
+	type Customer struct {
+		JenisKelamin string
+		User         User
+	}
+
+	customer := Customer{
+		JenisKelamin: "Pria",
+		User:         user,
+	}
+
+	fmt.Println(customer)
+}
+
+func method() {
+
+}
+
 func main() {
 	fmt.Println("Halo Guys")
 	fmt.Println("=====VARIABEL=====")
@@ -289,5 +332,8 @@ func main() {
 	fmt.Println()
 	fmt.Println("=====POINTER=====")
 	pointer()
+	fmt.Println()
+	fmt.Println("=====STRUCT=====")
+	structLesson()
 	fmt.Println()
 }
